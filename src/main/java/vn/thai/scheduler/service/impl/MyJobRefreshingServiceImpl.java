@@ -11,7 +11,7 @@ import org.quartz.Trigger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-import vn.thai.scheduler.job.MyJob;
+import vn.thai.scheduler.job.MyJobExcecuterService;
 import vn.thai.scheduler.job.MySchedule;
 import vn.thai.scheduler.service.MyJobRefreshingService;
 import vn.thai.scheduler.service.LoggingTimeService;
@@ -30,7 +30,7 @@ public class MyJobRefreshingServiceImpl implements MyJobRefreshingService {
 
         int jobId = randomInt(3);
 
-        JobDetail job = newJob(MyJob.class)
+        JobDetail job = newJob(MyJobExcecuterService.class)
             .withIdentity("myJob" + jobId, "group1")
             .build();
 
